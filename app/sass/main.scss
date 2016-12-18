@@ -1,0 +1,14 @@
+@import "base/normalize/normalize";
+@import "base/fonts";
+@import 'helpers/variables';
+@import "helpers/mixins";
+@import "helpers/animation";
+@import "base/general";
+@import 'layout/header';
+@import 'components/nav';
+@import "components/lists";
+
+@import "components/mainSection";
+@import "components/porfolio";
+@import "components/about";
+
