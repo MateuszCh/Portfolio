@@ -16,7 +16,7 @@
   h2  {
     font-family: $cursive-font2;
     flex-grow: 1;
-    font-size: 2rem;
+    padding: 0;
   }
   ul  {
     @include mq-not-mobile  {
