@@ -1,11 +1,31 @@
 .about  {
-  ul  {
-    padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .skillsList {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    li  {
-      padding: .25rem;
+    flex-direction: column;
+    h3  {
+      margin: 1rem 0;
+      text-align: center;
+      @include mq-not-mobile  {
+        font-size: 2rem;
+      }
+      @include laptops  {
+        font-size: 2rem;
+      }
+    }
+    ul  {
+      padding-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      li  {
+        padding: .25rem;
+        @include laptops  {
+          margin-left: 1rem;
+        }
+      }
     }
   }
 }

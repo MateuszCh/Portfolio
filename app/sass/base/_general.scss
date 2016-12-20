@@ -13,7 +13,7 @@ a   {
   text-decoration: none;
 }
 main  {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   @include mq-not-mobile  {
     width: 70%;
@@ -25,23 +25,43 @@ main  {
 h2  {
   text-align: center;
   font-size: 2rem;
-  padding: 2rem;
+  @include mq-not-mobile  {
+    font-size: 3rem;
+  }
+  @include laptops  {
+    font-size: 4rem;
+    padding:2rem;
+  }
 }
 ul  {
   list-style-type: none;
   li  {
     text-align: center;
+    font-weight: 300;
+    @include mq-not-mobile  {
+      font-size: 1.2rem;
+    }
+    @include laptops  {
+      font-size: 1.5rem;
+    }
   }
 }
 .tabs {
   min-height: 100vh;
+  padding: 0 1rem;
 }
 
 p   {
-  line-height: 1.70rem;
+  //letter-spacing: .05rem;
   font-size: 1rem;
+  word-spacing: .1rem;
   margin: 0.625rem 0;
+  font-weight: 300;
   @include mq-not-mobile  {
-    font-size: 1rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
+  @include laptops  {
+    font-size: 1.5rem;
   }
 }

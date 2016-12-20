@@ -9,7 +9,6 @@
     font-size: 3.5rem;
     @include mq-not-mobile {
       font-size: 6rem;
-      width: 50%;
       margin: 0 auto;
     }
   }
@@ -17,6 +16,7 @@
     font-family: $cursive-font2;
     flex-grow: 1;
     padding: 0;
+    font-size: 2rem;
   }
   ul  {
     @include mq-not-mobile  {
