@@ -11,9 +11,6 @@
       @include mq-not-mobile  {
         font-size: 2rem;
       }
-      @include laptops  {
-        font-size: 2rem;
-      }
     }
     ul  {
       padding-bottom: 1rem;
