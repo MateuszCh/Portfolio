@@ -58,7 +58,6 @@
         padding: .5rem;
         display: block;
         @include laptops  {
-          //filter: saturate(0);
           transition: all .5s ease;
           position: relative;
           &:after  {
@@ -73,7 +72,6 @@
             transition: all .5s ease;
           }
           &:hover   {
-            //filter: saturate(100%);
             figcaption  {
               bottom: 0;
             }
@@ -89,9 +87,6 @@
           overflow: hidden;
           @include laptops  {
             max-width: 25rem;
-            //&:hover figcaption  {
-            //  bottom: 0;
-            //}
           }
           img   {
             display: block;
@@ -107,13 +102,14 @@
             background-color: white;
             color: $bg-color;
             @include laptops  {
+              min-height: 6rem;
               font-size: 1.4rem;
               font-weight: 300;
               display: flex;
               align-items: center;
               justify-content: center;
               transition: all .5s ease-in-out;
-              bottom: -12.5rem;
+              bottom: -6rem;
             }
           }
         }

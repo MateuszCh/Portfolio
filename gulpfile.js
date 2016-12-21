@@ -49,9 +49,9 @@ gulp.task('html', function(){
 // Image Task
 // Compress
 gulp.task('image', function(){
-    gulp.src('app/imgUn/*')
+    gulp.src('app/images/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('app/images'));
+        .pipe(gulp.dest('app/imagesCom'));
 });
 
 // Browser-Sync Task

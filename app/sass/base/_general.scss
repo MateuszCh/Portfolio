@@ -1,3 +1,6 @@
+html  {
+  overflow-x: hidden;
+}
 *   {
   margin: 0;
   padding: 0;
@@ -7,20 +10,17 @@ body  {
   background-color: $bg-color;
   font-family: $text-font;
   color: white;
+  transition: all 1s ease;
+  &.light  {
+    background-color: #3E878C;
+  }
+  &.dark {
+    background-color: #212121;
+  }
 }
 a   {
   color: inherit;
   text-decoration: none;
-}
-main  {
-  width: 100%;
-  margin: 0 auto;
-  @include mq-not-mobile  {
-    width: 70%;
-  }
-  @include laptops  {
-    width: 60%;
-  }
 }
 h2  {
   text-align: center;
@@ -47,8 +47,26 @@ ul  {
   }
 }
 .tabs {
+  width: 100%;
+  margin: 0 auto;
+  @include mq-not-mobile  {
+    width: 70%;
+  }
+  @include laptops  {
+    width: 60%;
+  }
   min-height: 100vh;
   padding: 0 1rem;
+}
+
+.slides {
+  transition: all 1s ease;
+  &.moveLeft  {
+    transform: translateX(-100vw);
+  }
+  &.moveRight {
+    transform: translateX(100vw);
+  }
 }
 p   {
   font-size: 1rem;
@@ -63,3 +81,4 @@ p   {
     font-size: 1.5rem;
   }
 }
+
