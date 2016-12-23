@@ -1,4 +1,5 @@
 .portfolio  {
+  position: relative;
   @include mq-not-mobile  {
     display: flex;
     flex-direction: column;

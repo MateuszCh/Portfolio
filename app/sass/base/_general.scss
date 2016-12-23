@@ -10,7 +10,7 @@ body  {
   background-color: $bg-color;
   font-family: $text-font;
   color: white;
-  transition: all 1s ease;
+  transition: all 1.5s ease;
   &.light  {
     background-color: #3E878C;
   }
@@ -82,3 +82,34 @@ p   {
   }
 }
 
+.next,
+.previous {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+  padding-bottom: 3px;
+  @include laptops  {
+    display: inline-block;
+  }
+  &:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+  }
+  &:hover:after {
+    width: 100%;
+    background: white;
+  }
+}
+.next {
+  right: -30%;
+}
+.previous {
+  left: -30%;
+}

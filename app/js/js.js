@@ -8,10 +8,29 @@ $(function() {
     var $nextSlider;
     var color;
     var $lastSlider;
-    var targetSlider;
+    var $targetSlider;
+    var $afters = $(".next");
+    var $before = $(".previous");
+    var $nextAndPrevious = $(".next, .previous");
     $($slides[1]).hide().addClass("moveRight");
     $($slides[2]).hide().addClass("moveLeft");
+    function setCurrentSlider() {
+        $($slides).each(function () {
+            if(!($(this).hasClass("moveLeft") || $(this).hasClass("moveRight"))){
+                $targetSlider = $(this);
+            }
+        });
+    }
+    function hideNextAndPrevious() {
+        if (window.matchMedia("(min-width: 1200px)").matches) {
+            $($nextAndPrevious).hide(1);
+            setTimeout(function () {
+                $($nextAndPrevious).fadeIn(500);
+            }, 1000);
+        }
+    }
     function next() {
+        hideNextAndPrevious();
         if($($targetSlider).next()[0]){
             $nextSlider = $($targetSlider).next()[0];
             $lastSlider = $($nextSlider).next()[0];
@@ -32,6 +51,7 @@ $(function() {
         $($lastSlider).removeClass("moveLeft").addClass("moveRight");
     }
     function previous() {
+        hideNextAndPrevious();
         if($($targetSlider).prev()[0]){
             $nextSlider = $($targetSlider).prev()[0];
             $lastSlider = $($nextSlider).prev()[0];
@@ -51,9 +71,17 @@ $(function() {
         $($nextSlider).removeClass("moveLeft");
         $($lastSlider).removeClass("moveRight").addClass("moveLeft");
     }
+    $afters.on("click", function () {
+        setCurrentSlider();
+        next();
+    });
+    $before.on("click", function () {
+        setCurrentSlider();
+        previous();
+    });
     $headers.swipe( {
         swipe:function(event, direction) {
-            $targetSlider = $(this).parent().parent()[0];
+            setCurrentSlider();
             switch(direction){
                 case "left":
                     next();
@@ -65,11 +93,7 @@ $(function() {
         }
     });
     $(document).on("keydown", function (e) {
-        $($slides).each(function () {
-            if(!($(this).hasClass("moveLeft") || $(this).hasClass("moveRight"))){
-                $targetSlider = $(this);
-            }
-        });
+        setCurrentSlider();
         var code = e.which;
         if(code == 37){
             previous();
