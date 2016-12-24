@@ -12,7 +12,7 @@ body  {
   color: white;
   transition: all 1.5s ease;
   &.light  {
-    background-color: #3E878C;
+    background-color: #7A7D5A;
   }
   &.dark {
     background-color: #212121;
@@ -81,7 +81,6 @@ p   {
     font-size: 1.5rem;
   }
 }
-
 .next,
 .previous {
   display: none;

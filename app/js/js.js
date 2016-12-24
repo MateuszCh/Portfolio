@@ -2,7 +2,6 @@
  * Created by Mateusz Chybiorz on 2016-12-16.
  */
 $(function() {
-    var $headers = $(".headerToSlide");
     var $slides = $(".slides");
     var $body = $("body");
     var $nextSlider;
@@ -25,12 +24,13 @@ $(function() {
         if (window.matchMedia("(min-width: 1200px)").matches) {
             $($nextAndPrevious).hide(1);
             setTimeout(function () {
-                $($nextAndPrevious).fadeIn(500);
+                var idi = $($nextSlider).attr("id");
+                $("#" + idi + " span").fadeIn(1000);
             }, 1000);
         }
     }
     function next() {
-        hideNextAndPrevious();
+        setCurrentSlider();
         if($($targetSlider).next()[0]){
             $nextSlider = $($targetSlider).next()[0];
             $lastSlider = $($nextSlider).next()[0];
@@ -41,6 +41,7 @@ $(function() {
             $nextSlider = $slides[0];
             $lastSlider = $slides[1];
         }
+        hideNextAndPrevious();
         $($nextSlider).show(1);
         $($targetSlider).hide(1);
         $($lastSlider).hide(1);
@@ -51,7 +52,7 @@ $(function() {
         $($lastSlider).removeClass("moveLeft").addClass("moveRight");
     }
     function previous() {
-        hideNextAndPrevious();
+        setCurrentSlider();
         if($($targetSlider).prev()[0]){
             $nextSlider = $($targetSlider).prev()[0];
             $lastSlider = $($nextSlider).prev()[0];
@@ -62,6 +63,7 @@ $(function() {
             $nextSlider = $slides[2];
             $lastSlider = $slides[1];
         }
+        hideNextAndPrevious();
         $($nextSlider).show(1);
         $($targetSlider).hide(1);
         $($lastSlider).hide(1);
@@ -72,33 +74,32 @@ $(function() {
         $($lastSlider).removeClass("moveRight").addClass("moveLeft");
     }
     $afters.on("click", function () {
-        setCurrentSlider();
         next();
     });
     $before.on("click", function () {
-        setCurrentSlider();
         previous();
     });
-    $headers.swipe( {
-        swipe:function(event, direction) {
-            setCurrentSlider();
-            switch(direction){
-                case "left":
-                    next();
-                    break;
-                case "right":
-                    previous();
-                    break;
-            }
-        }
-    });
+    $body.swipe({swipeLeft: next, swipeRight: previous, allowPageScroll: "auto"});
     $(document).on("keydown", function (e) {
-        setCurrentSlider();
         var code = e.which;
         if(code == 37){
             previous();
         } else if (code == 39){
             next();
+        }
+    });
+    $(document).ready(function () {
+        if (window.matchMedia("(max-width: 1199px)").matches) {
+            var $handTouchIcon = $('<div class="infoForMobile"><div><img src="images/handTouchIcon.png" alt=""></div></div>');
+            $($body).append($handTouchIcon);
+            $(".infoForMobile").fadeTo(500, 1, function () {
+                $(".infoForMobile img").addClass("startAnimation");
+            });
+            setTimeout(function () {
+                $(".infoForMobile").fadeOut(1000, function () {
+                    $(this).remove();
+                });
+            }, 2500);
         }
     });
 });

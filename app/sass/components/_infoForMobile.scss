@@ -1,0 +1,24 @@
+.infoForMobile  {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  div   {
+    padding: 9.375rem;
+    display: block;
+    background-image: radial-gradient(circle, #000 0%, transparent 70%);
+    img {
+      height: 80px;
+      display: block;
+      &.startAnimation  {
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-name: swing;
+      }
+    }
+  }
+}
