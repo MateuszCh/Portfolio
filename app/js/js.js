@@ -1,18 +1,19 @@
 /**
  * Created by Mateusz Chybiorz on 2016-12-16.
  */
-$(function() {
+(function($) {
+    //jquery objects
     var $slides = $(".slides");
     var $body = $("body");
+    var $afters = $(".next");
+    var $before = $(".previous");
+    var $nextAndPrevious = $(".next, .previous");
+    //variables declarations
     var $nextSlider;
     var color;
     var $lastSlider;
     var $targetSlider;
-    var $afters = $(".next");
-    var $before = $(".previous");
-    var $nextAndPrevious = $(".next, .previous");
-    $($slides[1]).hide().addClass("moveRight");
-    $($slides[2]).hide().addClass("moveLeft");
+    //get visible slider and set $targetSlider variable
     function setCurrentSlider() {
         $($slides).each(function () {
             if(!($(this).hasClass("moveLeft") || $(this).hasClass("moveRight"))){
@@ -20,6 +21,7 @@ $(function() {
             }
         });
     }
+    //hide all next and previous spans and fade in spans of visible slider
     function hideNextAndPrevious() {
         if (window.matchMedia("(min-width: 1200px)").matches) {
             $($nextAndPrevious).hide(1);
@@ -29,6 +31,7 @@ $(function() {
             }, 1000);
         }
     }
+    //make next slider visible
     function next() {
         setCurrentSlider();
         if($($targetSlider).next()[0]){
@@ -51,6 +54,7 @@ $(function() {
         $($nextSlider).removeClass("moveRight");
         $($lastSlider).removeClass("moveLeft").addClass("moveRight");
     }
+    //make previous slider visible
     function previous() {
         setCurrentSlider();
         if($($targetSlider).prev()[0]){
@@ -73,6 +77,7 @@ $(function() {
         $($nextSlider).removeClass("moveLeft");
         $($lastSlider).removeClass("moveRight").addClass("moveLeft");
     }
+    //event listeners
     $afters.on("click", function () {
         next();
     });
@@ -89,8 +94,11 @@ $(function() {
         }
     });
     $(document).ready(function () {
+        $($slides[1]).hide().addClass("moveRight");
+        $($slides[2]).hide().addClass("moveLeft");
+        //show touch icon on mobile indicating gesture on screen to change visible content
         if (window.matchMedia("(max-width: 1199px)").matches) {
-            var $handTouchIcon = $('<div class="infoForMobile"><div><img src="images/handTouchIcon.png" alt=""></div></div>');
+            var $handTouchIcon = $('<div class="infoForMobile"><div><img src="images/handTouchIconGrey.png" alt=""></div></div>');
             $($body).append($handTouchIcon);
             $(".infoForMobile").fadeTo(500, 1, function () {
                 $(".infoForMobile img").addClass("startAnimation");
@@ -102,4 +110,4 @@ $(function() {
             }, 2500);
         }
     });
-});
+})(jQuery);

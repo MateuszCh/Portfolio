@@ -12,10 +12,10 @@ body  {
   color: white;
   transition: all 1.5s ease;
   &.light  {
-    background-color: #7A7D5A;
+    background-color: $light-color;
   }
   &.dark {
-    background-color: #212121;
+    background-color: $dark-color;
   }
 }
 a   {
@@ -58,7 +58,6 @@ ul  {
   min-height: 100vh;
   padding: 0 1rem;
 }
-
 .slides {
   transition: all 1s ease;
   &.moveLeft  {
